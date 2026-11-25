@@ -1,13 +1,12 @@
 {
   "name": "@ehven/messaging-form-connector-hubspot",
-  "version": "0.1.0-dev.0",
-  "private": true,
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "description": "Submit validated messaging forms to HubSpot Forms.",
   "exports": "./src/submit-form.mjs",
   "files": [
-    "src"
+    "src/submit-form.mjs"
   ],
   "sideEffects": false,
   "engines": {
@@ -19,5 +18,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ehven-consultants-npm-products/ehven-messaging-form-connector-hubspot.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/ehven-consultants-npm-products/ehven-messaging-form-connector-hubspot#readme",
+  "bugs": {
+    "url": "https://github.com/ehven-consultants-npm-products/ehven-messaging-form-connector-hubspot/issues"
   }
 }

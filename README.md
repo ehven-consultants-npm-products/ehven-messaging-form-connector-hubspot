@@ -1,6 +1,12 @@
 # HubSpot messaging form connector
 
-`@ehven/messaging-form-connector-hubspot` sends a validated contact or request message to a configured HubSpot form. This private development candidate uses MIT and targets Node 24. It uses Fetch APIs and the HubSpot Forms v3 submission endpoint.
+`@ehven/messaging-form-connector-hubspot` sends a validated contact or request message to a configured HubSpot form. The server connector targets Node.js 24 or later and is MIT licensed. It uses Fetch APIs and the HubSpot Forms v3 submission endpoint.
+
+## Install
+
+```sh
+npm install @ehven/messaging-form-connector-hubspot
+```
 
 ```js
 import { submitHubSpotForm } from '@ehven/messaging-form-connector-hubspot';
@@ -10,7 +16,7 @@ const receipt = await submitHubSpotForm({
   formGuid: process.env.HUBSPOT_CONTACT_FORM_ID,
   data: validatedContact,
   context: { pageName: 'Contact', pageUri: 'https://example.org/contact/' },
-  signal,
+  signal: AbortSignal.timeout(10_000),
 });
 ```
 
@@ -22,3 +28,7 @@ const receipt = await submitHubSpotForm({
 - When using the core pipeline, await the connector inside the primary operation and return `{ ok: true }` after it resolves. The provider response body has a separate contract from the pipeline.
 
 HubSpot form configuration owns CRM routing, contact updates and Inbox behavior. The connector's tests use synthetic provider responses. Run `npm ci --ignore-scripts --offline` and `npm run check` to verify the transport contract locally.
+
+## Support
+
+Patch releases within 0.1 are intended to be compatible. Future 0.x minor releases may change APIs. Open an issue for bugs and usage questions. For a security concern, use the contact form to request a private reporting channel and keep credentials, tokens and submissions out of the public tracker. [Issues](https://github.com/ehven-consultants-npm-products/ehven-messaging-form-connector-hubspot/issues) · [Contact](https://ehven.com/contact/)
